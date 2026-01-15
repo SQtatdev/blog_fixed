@@ -14,6 +14,7 @@
             <p>{{ $post->snippet }}</p>
         @endif
         <div class="text-base-content/70">{{ $post->user->name }}</div>
+        <div class="text-base-content/70"><b>Comments: </b>{{ $post->comments_count }}</div>
         <div class="card-actions justify-end">
             @unless($full)
                 <a href="{{ route('post', $post) }}" class="btn btn-primary">Read more</a>
