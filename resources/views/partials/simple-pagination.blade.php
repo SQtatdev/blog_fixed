@@ -1,19 +1,31 @@
 @if ($paginator->hasPages())
-    <nav>
-        <ul class="pagination">
+    <nav class="flex justify-center" aria-label="{{ __('Pagination Navigation') }}">
+        <div class="join">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.previous')</span></li>
+                <button class="btn btn-sm btn-outline join-item btn-disabled" disabled>
+                    <span class="hidden sm:inline">@lang('pagination.previous')</span>
+                    <span aria-hidden="true">«</span>
+                </button>
             @else
-                <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a></li>
+                <a class="btn btn-sm btn-outline join-item" href="{{ $paginator->previousPageUrl() }}" rel="prev">
+                    <span class="hidden sm:inline">@lang('pagination.previous')</span>
+                    <span aria-hidden="true">«</span>
+                </a>
             @endif
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a></li>
+                <a class="btn btn-sm btn-outline join-item" href="{{ $paginator->nextPageUrl() }}" rel="next">
+                    <span aria-hidden="true">»</span>
+                    <span class="hidden sm:inline">@lang('pagination.next')</span>
+                </a>
             @else
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.next')</span></li>
+                <button class="btn btn-sm btn-outline join-item btn-disabled" disabled>
+                    <span aria-hidden="true">»</span>
+                    <span class="hidden sm:inline">@lang('pagination.next')</span>
+                </button>
             @endif
-        </ul>
+        </div>
     </nav>
 @endif
