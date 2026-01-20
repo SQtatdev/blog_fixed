@@ -1,88 +1,82 @@
-<x-guest-layout>
+@extends('partials.layout')
+
+@section('content')
     <div class="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
         <div class="card w-full max-w-md bg-base-100 shadow-xl">
-            <div class="card-body space-y-6">
-                <div>
-                    <h1 class="card-title">{{ __('Reset password') }}</h1>
+            <div class="card-body">
+                <div class="mb-6">
+                    <h1 class="card-title text-2xl">
+                        {{ __('Reset password') }}
+                    </h1>
                     <p class="text-sm opacity-70">
                         {{ __('Choose a new password to regain access to your account.') }}
                     </p>
                 </div>
 
-                <form method="POST" action="{{ route('password.store') }}" class="space-y-5">
+                <form method="POST" action="{{ route('password.store') }}">
                     @csrf
                     <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-                    <div class="form-control">
-                        <label for="email" class="label">
-                            <span class="label-text font-semibold">
-                                {{ __('Email address') }}
-                            </span>
-                        </label>
+                    {{-- Email --}}
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">
+                            {{ __('Email address') }}
+                        </legend>
                         <input
-                            id="email"
-                            name="email"
                             type="email"
+                            name="email"
                             value="{{ old('email', $request->email) }}"
                             required
                             autofocus
                             autocomplete="username"
-                            class="input input-bordered w-full"
-                        >
+                            class="input w-full @error('email') input-error @enderror"
+                        />
                         @error('email')
-                            <span class="text-error text-sm mt-1">
-                                {{ $message }}
-                            </span>
+                            <p class="label text-error">{{ $message }}</p>
                         @enderror
-                    </div>
+                    </fieldset>
 
-                    <div class="form-control">
-                        <label for="password" class="label">
-                            <span class="label-text font-semibold">
-                                {{ __('New password') }}
-                            </span>
-                        </label>
+                    {{-- New Password --}}
+                    <fieldset class="fieldset mt-2">
+                        <legend class="fieldset-legend">
+                            {{ __('New password') }}
+                        </legend>
                         <input
-                            id="password"
+                            type="password"
                             name="password"
-                            type="password"
                             required
                             autocomplete="new-password"
-                            class="input input-bordered w-full"
-                        >
+                            class="input w-full @error('password') input-error @enderror"
+                        />
                         @error('password')
-                            <span class="text-error text-sm mt-1">
-                                {{ $message }}
-                            </span>
+                            <p class="label text-error">{{ $message }}</p>
                         @enderror
-                    </div>
+                    </fieldset>
 
-                    <div class="form-control">
-                        <label for="password_confirmation" class="label">
-                            <span class="label-text font-semibold">
-                                {{ __('Confirm password') }}
-                            </span>
-                        </label>
+                    {{-- Confirm Password --}}
+                    <fieldset class="fieldset mt-2">
+                        <legend class="fieldset-legend">
+                            {{ __('Confirm password') }}
+                        </legend>
                         <input
-                            id="password_confirmation"
-                            name="password_confirmation"
                             type="password"
+                            name="password_confirmation"
                             required
                             autocomplete="new-password"
-                            class="input input-bordered w-full"
-                        >
+                            class="input w-full @error('password_confirmation') input-error @enderror"
+                        />
                         @error('password_confirmation')
-                            <span class="text-error text-sm mt-1">
-                                {{ $message }}
-                            </span>
+                            <p class="label text-error">{{ $message }}</p>
                         @enderror
-                    </div>
+                    </fieldset>
 
-                    <button type="submit" class="btn btn-primary w-full">
-                        {{ __('Reset password') }}
-                    </button>
+                    <div class="mt-6">
+                        <button type="submit" class="btn btn-primary w-full">
+                            {{ __('Reset password') }}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-</x-guest-layout>
+@endsection
