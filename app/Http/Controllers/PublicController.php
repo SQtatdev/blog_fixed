@@ -14,6 +14,10 @@ class PublicController extends Controller
     }
 
     public function post(Post $post){
+        $post->load([
+            'comments' => fn ($query) => $query->latest()->with('user'),
+        ]);
+
         return view('post', compact('post'));
     }
 
