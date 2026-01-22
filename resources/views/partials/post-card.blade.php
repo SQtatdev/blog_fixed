@@ -8,7 +8,7 @@
                 </figure> --}}
     <div class="card-body">
         <h2 class="card-title">{{ $post->title }}</h2>
-        @if($full)
+        @if ($full)
             <p>{!! $post->displayBody !!}</p>
         @else
             <p>{{ $post->snippet }}</p>
@@ -16,20 +16,17 @@
         <div class="text-base-content/70">{{ $post->user->name }}</div>
         <div class="text-base-content/70">{{ $post->comments_count }}</div>
         <div class="card-actions justify-end">
-            @unless($full)
+            @unless ($full)
                 <a href="{{ route('post', $post) }}" class="btn btn-primary">Read more</a>
             @endunless
             <div class="text-base-content/70"><b>Likes: </b>{{ $post->likes_count }}</div>
-        <div class="card-actions justify-end">
-            @if($post->authHasLiked)
-                <a href="{{ route('post.like', $post) }}" class="btn btn-error">Unlike</a>
-            @else
-                <a href="{{ route('post.like', $post) }}" class="btn btn-secondary">Like</a>
-            @endif
-
-            @unless($full)
-                <a href="{{ route('post', $post) }}" class="btn btn-primary">Read more</a>
-            @endunless
+            <div class="card-actions justify-end">
+                @if ($post->authHasLiked)
+                    <a href="{{ route('post.like', $post) }}" class="btn btn-error">Unlike</a>
+                @else
+                    <a href="{{ route('post.like', $post) }}" class="btn btn-secondary">Like</a>
+                @endif
+            </div>
         </div>
     </div>
 </div>

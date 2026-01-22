@@ -6,8 +6,6 @@
             @include('partials.post-card')
         @endforeach
     </div>
-    @php
-        throw new Exception('debug')
-    @endphp
+
 
 @endsection
