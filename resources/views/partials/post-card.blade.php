@@ -17,7 +17,7 @@
             <a href="{{route('user', $post->user)}}">{{ $post->user->name }}</a>
         </div>
         @if($post->category)
-            <a><div class="badge badge-soft badge-secondary mb-1">{{$post->category->name }}</div></a>
+            <a href="{{route('category', $post->category)}}"><div class="badge badge-soft badge-secondary mb-1">{{$post->category->name }}</div></a>
         @endif
         <div class="text-base-content/70">{{ $post->comments_count }}</div>
         <div class="card-actions justify-end">

@@ -18,7 +18,10 @@
                         </ul>
                     </li>
                 @endauth
-                <li><a>Item 3</a></li>
+                @foreach 
+            (App\Models\Category::where('category_id', null)->get() as $category)
+             @include('partials.submenu', ['category' => $category])
+            @endforeach
             </ul>
         </div>
         <a href="{{ route('home') }}" class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
