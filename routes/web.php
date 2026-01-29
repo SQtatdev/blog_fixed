@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/post/{post}', [PublicController::class, 'post'])->name('post');
-
+Route::get('/user/{user}', [PublicController::class, 'user'])->name('user');
 Route::middleware('auth')->group(function () {
     Route::post('/post/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 });
