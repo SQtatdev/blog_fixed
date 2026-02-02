@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 namespace App\Policies;
 
@@ -63,3 +63,4 @@ class TagPolicy
     {
         return false;
     }
+}

@@ -63,3 +63,4 @@ class TagPolicy
     {
         return false;
     }
+}

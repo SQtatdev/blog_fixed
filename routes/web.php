@@ -12,6 +12,7 @@ Route::get('/user/{user}', [PublicController::class, 'user'])->name('user');
 Route::middleware('auth')->group(function () {});
 Route::post('/post/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/category/{category}', [PublicController::class, 'category'])->name('category');
+Route::get('/tag/{tag}', [PublicController::class, 'tag'])->name('tag');
 
 // Route::get('/admin/posts', [PostController::class, 'index'])->name('posts.index');
 // Route::get('/admin/posts/create', [PostController::class, 'create'])->name('posts.create');

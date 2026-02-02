@@ -30,7 +30,7 @@
 
             <div>
             @foreach($post->tags as $tag)
-                <div class="badge badge-soft badge-primary mb-1">{{$tag->name}}</div>
+                 <a href="{{ route('tag', $tag) }}" class="badge bg-pink-300 text-white mb-1">{{$tag->name}}</a>
             @endforeach
         </div>
             <div class="card-actions justify-end">
